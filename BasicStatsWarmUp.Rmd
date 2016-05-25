@@ -1,0 +1,69 @@
+Enter your code here. Read input from STDIN. Print output to STDOUT
+
+Clear workspace
+```{r}
+rm(list=ls())
+
+```
+
+Input, Mean, Median
+```{r}
+stdin = c(64630, 11735, 14216, 99233, 14470, 4978, 73429, 38120, 51135, 67060)
+stdout = mean(stdin)
+stdout[2] = median(stdin)
+```
+
+Mode
+```{r}
+getmode <- function(v) {
+     uniqv <- unique(v)
+     uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+if(length(stdin) == length(unique(stdin))) {
+  stdout[3] = sort(stdin)[1]
+}
+
+if(length(stdin) > length(unique(stdin))) {
+  stdout[3] = stdin[which.max(tabulate(match(stdin, unique(stdin))))]
+}
+
+```
+
+Standard deviation
+```{r}
+stdout[4] = sd(stdin)
+
+```
+
+Confidence interval
+```{r}
+
+t = t.test(stdin)
+stdout[5:6] = t[[4]][1:2]
+
+```
+
+Output
+```{r}
+print(stdout)
+```
+
+
+Printing to screen
+```{r}
+stdout2 = as.list(stdout[1:4])
+stdout2[[5]] = stdout[5:6]
+
+stdout2
+
+for (i in 1:5) {
+  print(stdout2[[i]], row.names = FALSE)
+}
+
+
+print(stdout, row.names = FALSE)
+
+prettyNum(stdout)
+
+```

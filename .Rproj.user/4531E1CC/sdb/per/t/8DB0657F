@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Enter your code here. Read input from STDIN. Print output to STDOUT\n\nClear workspace\n```{r}\nrm(list=ls())\n\n```\n\nInput, Mean, Median\n```{r}\nstdin = c(64630, 11735, 14216, 99233, 14470, 4978, 73429, 38120, 51135, 67060)\nstdout = mean(stdin)\nstdout[2] = median(stdin)\n```\n\nMode\n```{r}\ngetmode <- function(v) {\n     uniqv <- unique(v)\n     uniqv[which.max(tabulate(match(v, uniqv)))]\n}\n\nif(length(stdin) == length(unique(stdin))) {\n  stdout[3] = sort(stdin)[1]\n}\n\nif(length(stdin) > length(unique(stdin))) {\n  stdout[3] = stdin[which.max(tabulate(match(stdin, unique(stdin))))]\n}\n\n```\n\nStandard deviation\n```{r}\nstdout[4] = sd(stdin)\n\n```\n\nConfidence interval\n```{r}\n\nt = t.test(stdin)\nstdout[5:6] = t[[4]][1:2]\n\n```\n\nOutput\n```{r}\nprint(stdout)\n```\n\n\nPrinting to screen\n```{r}\nstdout2 = as.list(stdout[1:4])\nstdout2[[5]] = stdout[5:6]\n\nstdout2\n\nfor (i in 1:5) {\n  print(stdout2[[i]], row.names = FALSE)\n}\n\n\nprint(stdout, row.names = FALSE)\n\nprettyNum(stdout)\n\n```\n",
+    "created" : 1464052713420.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "53|6|68|0|\n",
+    "hash" : "2518316688",
+    "id" : "8DB0657F",
+    "lastKnownWriteTime" : 1464136376,
+    "last_content_update" : 1464136379836,
+    "path" : "~/Dropbox/Upskilling/HackerRank/BasicStatsWarmUp.Rmd",
+    "project_path" : "BasicStatsWarmUp.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
